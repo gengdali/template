@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: easyDinner
+    name: litle
   profiles:
     active: dev #默认为开发环境
   servlet:

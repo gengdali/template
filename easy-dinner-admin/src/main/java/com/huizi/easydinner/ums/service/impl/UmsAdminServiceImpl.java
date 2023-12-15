@@ -12,7 +12,6 @@ import com.huizi.easydinner.ums.dto.UmsAdminParam;
 import com.huizi.easydinner.ums.entity.UmsAdmin;
 import com.huizi.easydinner.ums.entity.UmsResource;
 import com.huizi.easydinner.ums.mapper.UmsAdminMapper;
-import com.huizi.easydinner.ums.mapper.UmsMenuMapper;
 import com.huizi.easydinner.ums.mapper.UmsResourceMapper;
 import com.huizi.easydinner.ums.service.UmsAdminService;
 import com.huizi.easydinner.ums.vo.UmsAdminVo;
@@ -47,8 +46,6 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
     private PasswordEncoder passwordEncoder;
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
-    @Autowired
-    private UmsMenuMapper umsMenuMapper;
     @Autowired
     private UmsResourceMapper resourceMapper;
 

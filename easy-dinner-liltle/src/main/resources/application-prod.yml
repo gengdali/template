@@ -30,7 +30,4 @@ logging:
     path: /var/logs
   level:
     root: info
-    com.huizi.easydinner: info
-
-logstash:
-  host: logstash
+    com.tc.easydinner: info

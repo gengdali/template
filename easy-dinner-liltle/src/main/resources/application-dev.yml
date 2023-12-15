@@ -28,8 +28,4 @@ spring:
 logging:
   level:
     root: info
-    com.huizi.easydinner: debug
-
-logstash:
-  host: localhost
-  enableInnerLog: false
+    com.tc.easydinner: debug
