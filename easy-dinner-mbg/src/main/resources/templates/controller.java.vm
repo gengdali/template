@@ -1,0 +1,94 @@
+package ${package.Controller};
+
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+#if(${restControllerStyle})
+import org.springframework.web.bind.annotation.RestController;
+#else
+import org.springframework.stereotype.Controller;
+#end
+#if(${superControllerClassPackage})
+import ${superControllerClassPackage};
+#end
+
+/**
+ * <p>
+ * $!{table.comment} 前端控制器
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+#if(${restControllerStyle})
+@RestController
+#else
+@Controller
+#end
+@RequestMapping("#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end")
+#if(${kotlin})
+class ${table.controllerName}#if(${superControllerClass}) : ${superControllerClass}()#end
+
+#else
+    #if(${superControllerClass})
+    public class ${table.controllerName} extends ${superControllerClass} {
+    #else
+    public class ${table.controllerName} {
+    #end
+@Autowired
+private ${table.serviceName} ${table.variableName}Service;
+
+/**
+ * 获取列表
+ */
+@RequestMapping(value = "/list", method = RequestMethod.GET)
+public Object list(){
+        return ${table.variableName}Service.list();
+        }
+
+/**
+ * 获取信息
+ */
+@GetMapping("/info/{id}")
+public Object info(@PathVariable("id") Long id){
+        return ${table.variableName}Service.getById(id);
+        }
+
+/**
+ * 新增
+ */
+@PostMapping("/save")
+public Object save(@RequestBody ${table.className} ${table.variableName}){
+        if(${table.variableName}Service.save(${table.variableName})){
+        return"success";
+        }else{
+        return"error";
+        }
+        }
+
+/**
+ * 修改
+ */
+@PutMapping("/update")
+public Object update(@RequestBody ${table.className} ${table.variableName}){
+        if(${table.variableName}Service.updateById(${table.variableName})){
+        return"success";
+        }else{
+        return"error";
+        }
+        }
+
+/**
+ * 删除
+ */
+@DeleteMapping("/delete/{id}")
+public Object delete(@PathVariable("id") Long id){
+        if(${table.variableName}Service.removeById(id)){
+        return"success";
+        }else{
+        return"error";
+        }
+        }
+        }
+
+#end
